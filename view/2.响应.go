@@ -46,6 +46,11 @@ func _html(c *gin.Context) {
 	c.HTML(200, "index.html", user)
 }
 
+// 重定向
+func _redirect(c *gin.Context) {
+	c.Redirect(302, "http://www.baidu.com")
+}
+
 func main() {
 	router := gin.Default()
 
@@ -59,6 +64,7 @@ func main() {
 	router.GET("/xml", _xml)
 	router.GET("/yaml", _yaml)
 	router.GET("/html", _html)
+	router.GET("/baidu", _redirect)
 
 	router.Run(":80")
 }
